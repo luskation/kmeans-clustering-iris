@@ -8,9 +8,8 @@ from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
 from eda import load_dataset
 from preprocessing import get_scaled_features
+from config import OUTPUT_DIR, RANDOM_STATE
 
-OUTPUT_DIR = "../outputs"
-RANDOM_STATE = 42
 KS_TO_COMPARE = [2, 3]
 
 
@@ -45,7 +44,7 @@ def main():
         print(f"Adjusted Rand Index: {ari:.4f}")
         print(f"Normalized Mutual Information: {nmi:.4f}")
 
-        output_path = f"{OUTPUT_DIR}/crosstab_k{k}.png"
+        output_path = OUTPUT_DIR / f"crosstab_k{k}.png"
         plot_crosstab(ct, k, output_path)
         print(f"Gráfico salvo em {output_path}")
 

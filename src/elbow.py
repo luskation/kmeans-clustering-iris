@@ -3,12 +3,12 @@
 import matplotlib.pyplot as plt
 
 from preprocessing import get_scaled_features
-from clustering import run_kmeans_range, K_RANGE
+from clustering import run_kmeans_range
+from config import K_RANGE, OUTPUT_DIR
 
-OUTPUT_DIR = "../outputs"
 
-
-def plot_elbow(results, output_path=f"{OUTPUT_DIR}/elbow_method.png"):
+def plot_elbow(results, output_path=None):
+    output_path = output_path or OUTPUT_DIR / "elbow_method.png"
     ks = list(results.keys())
     wcss = [results[k]["wcss"] for k in ks]
 
@@ -39,7 +39,7 @@ def main():
     results = run_kmeans_range(X_scaled, K_RANGE)
     print_deltas(results)
     plot_elbow(results)
-    print(f"\nGráfico salvo em {OUTPUT_DIR}/elbow_method.png")
+    print(f"\nGráfico salvo em {OUTPUT_DIR / 'elbow_method.png'}")
 
 
 if __name__ == "__main__":

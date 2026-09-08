@@ -3,9 +3,7 @@
 from sklearn.cluster import KMeans
 
 from preprocessing import get_scaled_features
-
-K_RANGE = range(2, 11)
-RANDOM_STATE = 42
+from config import K_RANGE, RANDOM_STATE
 
 
 def run_kmeans_range(X, k_range=K_RANGE):

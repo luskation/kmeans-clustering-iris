@@ -5,9 +5,8 @@ from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 
 from preprocessing import get_scaled_features
+from config import OUTPUT_DIR, RANDOM_STATE
 
-OUTPUT_DIR = "../outputs"
-RANDOM_STATE = 42
 KS_TO_PLOT = [2, 3]
 
 
@@ -35,7 +34,7 @@ def main():
     for k in KS_TO_PLOT:
         model = KMeans(n_clusters=k, random_state=RANDOM_STATE, n_init=10)
         labels = model.fit_predict(X_scaled)
-        output_path = f"{OUTPUT_DIR}/pca_clusters_k{k}.png"
+        output_path = OUTPUT_DIR / f"pca_clusters_k{k}.png"
         plot_clusters_pca(X_pca, labels, k, output_path)
         print(f"Gráfico salvo em {output_path}")
 

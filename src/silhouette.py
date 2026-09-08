@@ -4,9 +4,8 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import silhouette_score
 
 from preprocessing import get_scaled_features
-from clustering import run_kmeans_range, K_RANGE
-
-OUTPUT_DIR = "../outputs"
+from clustering import run_kmeans_range
+from config import K_RANGE, OUTPUT_DIR
 
 
 def compute_silhouette_scores(X, results):
@@ -17,7 +16,8 @@ def compute_silhouette_scores(X, results):
     return scores
 
 
-def plot_silhouette(scores, output_path=f"{OUTPUT_DIR}/silhouette_scores.png"):
+def plot_silhouette(scores, output_path=None):
+    output_path = output_path or OUTPUT_DIR / "silhouette_scores.png"
     ks = list(scores.keys())
     values = list(scores.values())
 
@@ -46,7 +46,7 @@ def main():
     print(f"\nMelhor K por Silhouette Score: {best_k} ({scores[best_k]:.4f})")
 
     plot_silhouette(scores)
-    print(f"Gráfico salvo em {OUTPUT_DIR}/silhouette_scores.png")
+    print(f"Gráfico salvo em {OUTPUT_DIR / 'silhouette_scores.png'}")
 
 
 if __name__ == "__main__":

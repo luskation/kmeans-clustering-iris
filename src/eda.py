@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.datasets import load_iris
 
-OUTPUT_DIR = "outputs"
+from config import OUTPUT_DIR
 
 
 def load_dataset():

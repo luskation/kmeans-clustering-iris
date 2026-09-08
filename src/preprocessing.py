@@ -4,13 +4,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 from eda import load_dataset
-
-FEATURES = [
-    "sepal length (cm)",
-    "sepal width (cm)",
-    "petal length (cm)",
-    "petal width (cm)",
-]
+from config import FEATURES
 
 
 def get_scaled_features(df: pd.DataFrame = None):
